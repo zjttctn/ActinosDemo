@@ -16,8 +16,8 @@ RUN node -v
 RUN npm -v
 RUN git clone https://github.com/ONLYOFFICE/build_tools.git
 RUN pwd
-WORKDIR /root/build_tools/tools/linux
-RUN cd ./build_tools/tools/linux
+WORKDIR /build_tools/tools/linux
+RUN cd /build_tools/tools/linux
 RUN ./automate.py server
 
 CMD bash
