@@ -4,16 +4,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    container:
-      image: ubuntu:16.04
-
     steps:
     - uses: actions/checkout@v1
-    - name: 运行多行脚本
+    # 登录Docker Hub
+    - name: Build the Docker image
       run: |
-        apt update
-        apt install -y sudo python git
-        git clone https://github.com/ONLYOFFICE/build_tools.git
-        cd build_tools/tools/linux
-        ./automate.py server
+        docker version
+        # 登录阿里云镜像仓库
+        docker login --username=${{ secrets.DOCKER_HUB_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+        # 使用Dockerfile构建镜像
+        docker build . --file Dockerfile --tag ${{ vars.hubAddr }}/${{ vars.USER_NAME }}/${{ vars.IMAGE_NAME }}:${{ vars.tag }}
+        # 推送镜像到镜像仓库
+        docker push ${{ vars.hubAddr }}/${{ vars.USER_NAME }}/${{ vars.IMAGE_NAME }}:${{ vars.tag }}
