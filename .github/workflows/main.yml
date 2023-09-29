@@ -13,4 +13,7 @@ jobs:
     - name: 运行多行脚本
       run: |
         apt update
-        apt install sudo python git
+        apt install -y sudo python git
+        git clone https://github.com/ONLYOFFICE/build_tools.git
+        cd build_tools/tools/linux
+        ./automate.py server
