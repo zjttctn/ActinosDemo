@@ -7,7 +7,7 @@ RUN apt-get -y update && \
     apt-get -y install python \
                        git \
                        sudo
-RUN apt install nodejs
+RUN apt-get -y install nodejs
 RUN npm cache clean -f
 RUN npm install -g n
 RUN n 16.15.1
