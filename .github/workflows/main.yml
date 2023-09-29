@@ -1,0 +1,15 @@
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: 运行一行脚本
+      run: echo hello, 天台
+    - name: 运行多行脚本
+      run:
+        echo Add other actions to build,
+        echo test, and deploy your project.
