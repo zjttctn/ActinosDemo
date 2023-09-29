@@ -10,7 +10,16 @@ RUN apt-get -y update && \
                        sudo
 RUN rm /usr/bin/python && ln -s /usr/bin/python2 /usr/bin/python
 RUN git clone https://github.com/ONLYOFFICE/build_tools.git
+RUN cd /root/build_tools/tools/linux
+RUN apt install nodejs
+RUN npm cache clean -f
+RUN npm install -g n
+RUN n 16.15.1
+RUN npm install -g npm@8.12.1
+RUN node -v
+RUN npm -v
+RUN cd /root/build_tools/tools/linux
+RUN ./automate.py server
 WORKDIR /root/build_tools
 
-CMD cd tools/linux && \
-    python3 ./automate.py
+CMD bash
