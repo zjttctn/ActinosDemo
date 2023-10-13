@@ -15,7 +15,7 @@ RUN pip install --upgrade pip
 
 RUN pip install --upgrade -r /codepy/requirements.txt
 
-RUN playwright install chrome msedge firefox
+RUN playwright install
 
 RUN apt-get install ttf-wqy-microhei
 
