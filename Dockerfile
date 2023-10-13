@@ -5,9 +5,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && \
-    apt-get -y install python \
-                       git \
-                       sudo
+    apt-get -y install python3 python3-pip git sudo
 
 WORKDIR /codepy
 
