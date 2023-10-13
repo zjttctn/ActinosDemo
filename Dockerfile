@@ -13,7 +13,7 @@ COPY ./requirements.txt /codepy/requirements.txt
 
 RUN pip install --upgrade pip 
 
-RUN pip install --no-cache-dir --upgrade -r /codepy/requirements.txt
+RUN pip install --upgrade -r /codepy/requirements.txt
 
 RUN playwright install chrome msedge firefox
 
