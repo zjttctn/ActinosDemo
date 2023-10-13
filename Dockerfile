@@ -23,7 +23,7 @@ RUN apt-get install ttf-wqy-microhei
 
 RUN apt-get install -y libnss3 libx11-xcb1 libasound2 libatk-bridge2.0-0 libgtk-3-0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libxkbcommon0 libxslt1.1 libgtk-3-0 libdbus-glib-1-2
 
-COPY ./demo3.py /codepy/main.py
+COPY ./main.py /codepy/main.py
 
 CMD ["python", "/codepy/main.py"]
 
