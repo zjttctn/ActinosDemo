@@ -23,7 +23,8 @@ RUN apt-get install -y libnss3 libx11-xcb1 libasound2 libatk-bridge2.0-0 libgtk-
 
 COPY ./main.py /codepy/main.py
 
-CMD ["python", "/codepy/main.py"]
+# CMD ["python", "/codepy/main.py"]
+CMD bash
 
 # 以下为尝试构建onlyoffice镜像
 # FROM ubuntu:16.04
