@@ -26,7 +26,7 @@ RUN pip install --upgrade pip
 
 RUN pip install --upgrade -r /codepy/requirements.txt
 
-RUN playwright install Chromium
+RUN playwright install chromium
 
 RUN apt-get install -y ttf-wqy-microhei
 
