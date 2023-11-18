@@ -7,6 +7,17 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get -y update && \
     apt-get -y install python3 python3-pip git sudo
 
+# 20231118.添加允许镜像中通过odbc访问sql server。
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get -y update && \
+    ACCEPT_EULA=Y apt-get install -y msodbcsql17 && \
+    ACCEPT_EULA=Y apt-get install -y mssql-tools && \
+    apt-get install -y unixodbc-dev
+
+# 20231118.添加相应命令到搜索路径中: requirements.txt中playwright==1.31.1以后为新扩展有包
+RUN ln -s /opt/mssql-tools/bin/bcp /usr/bin/bcp && ln -s /opt/mssql-tools/bin/sqlcmd /usr/bin/sqlcmd
+
 WORKDIR /codepy
 
 COPY ./requirements.txt /codepy/requirements.txt
