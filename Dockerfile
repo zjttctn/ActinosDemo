@@ -5,7 +5,7 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && \
-    apt-get -y install python3 python3-pip git sudo
+    apt-get -y install python3 python3-pip git sudo curl
 
 # 20231118.添加允许镜像中通过odbc访问sql server。
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
